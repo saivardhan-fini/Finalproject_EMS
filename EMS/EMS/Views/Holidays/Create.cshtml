@@ -1,0 +1,168 @@
+﻿@model EMS.Models.Holiday
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2 class="page-title">Create Holiday</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-container">
+        <h4 class="form-heading">Holiday Details</h4>
+        <hr class="form-separator" />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.HolidayID, htmlAttributes: new { @class = "form-label" })
+            <div class="form-input">
+                @Html.EditorFor(model => model.HolidayID, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.HolidayID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.HolidayName, htmlAttributes: new { @class = "form-label" })
+            <div class="form-input">
+                @Html.EditorFor(model => model.HolidayName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.HolidayName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.HolidayDate, htmlAttributes: new { @class = "form-label" })
+            <div class="form-input">
+                @Html.EditorFor(model => model.HolidayDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.HolidayDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+    </div>
+}
+
+<div class="back-link">
+    @Html.ActionLink("Back to List", "Index", new { @class = "btn btn-secondary" })
+</div>
+
+<style>
+    body {
+        font-family: 'Roboto', sans-serif;
+        background-color: #f0f0f0; /* Light gray background */
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+
+    .page-title {
+        text-align: center;
+        color: #007bff; /* Dodger Blue for headings */
+        margin-bottom: 30px;
+        font-size: 2rem;
+        font-weight: 700;
+    }
+
+    .form-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: rgba(0, 0, 0, 0.8); /* Dark overlay background */
+        border: 1px solid #ddd;
+        border-radius: 12px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+    }
+
+    .form-heading {
+        color: #007bff; /* Dodger Blue for subheadings */
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+
+    .form-separator {
+        border: none;
+        border-top: 2px solid #007bff; /* Dodger Blue for separator */
+        margin-bottom: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: #ddd; /* Light gray for labels */
+    }
+
+    .form-input {
+        width: 100%;
+    }
+
+    .form-control {
+        border-radius: 0.25rem;
+        border: 1px solid #ced4da; /* Light gray border */
+        background-color: #fff; /* White background */
+        color: #495057; /* Darker text color */
+    }
+
+        .form-control:focus {
+            border-color: #007bff; /* Dodger Blue border on focus */
+            box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
+        }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        color: #ffffff;
+        border-radius: 6px;
+        padding: 10px 20px;
+        font-size: 1rem;
+        font-weight: 700;
+        text-decoration: none;
+        display: inline-block;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            transform: scale(1.02);
+        }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+        color: #ffffff;
+        border-radius: 6px;
+        padding: 8px 16px;
+        font-size: 0.875rem;
+        font-weight: 700;
+        text-decoration: none;
+        display: inline-block;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            transform: scale(1.02);
+        }
+
+    .text-danger {
+        color: #dc3545; /* Danger color for error messages */
+    }
+
+    .form-actions {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .back-link {
+        text-align: center;
+        margin-top: 20px;
+    }
+</style>

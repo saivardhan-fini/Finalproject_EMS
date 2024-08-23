@@ -1,0 +1,302 @@
+﻿@model EMS.Models.Employee
+
+@{ ViewBag.Title = "Create"; }
+
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+
+{
+
+@Html.AntiForgeryToken()
+
+                <div class="container mt-4">
+
+                    <h4>Employee</h4>
+
+                    <hr />
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="form-group row">
+
+                        @Html.LabelFor(model => model.Emp_ID, "Employee ID:", htmlAttributes: new { @class = "col-sm-3 col-form-label" })
+
+                        <div class="col-sm-9">
+
+                            @Html.EditorFor(model => model.Emp_ID, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Employee ID" } })
+
+                            @Html.ValidationMessageFor(model => model.Emp_ID, "", new { @class = "text-danger" })
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group row">
+
+                        @Html.LabelFor(model => model.Emp_First_Name, "First Name:", htmlAttributes: new { @class = "col-sm-3 col-form-label" })
+
+                        <div class="col-sm-9">
+
+                            @Html.EditorFor(model => model.Emp_First_Name, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter First Name" } })
+
+                            @Html.ValidationMessageFor(model => model.Emp_First_Name, "", new { @class = "text-danger" })
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group row">
+
+                        @Html.LabelFor(model => model.Emp_Last_Name, "Last Name:", htmlAttributes: new { @class = "col-sm-3 col-form-label" })
+
+                        <div class="col-sm-9">
+
+                            @Html.EditorFor(model => model.Emp_Last_Name, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Last Name" } })
+
+                            @Html.ValidationMessageFor(model => model.Emp_Last_Name, "", new { @class = "text-danger" })
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group row">
+
+                        @Html.LabelFor(model => model.Emp_Date_of_Birth, "Date of Birth:", htmlAttributes: new { @class = "col-sm-3 col-form-label" })
+
+                        <div class="col-sm-9">
+
+                            @Html.EditorFor(model => model.Emp_Date_of_Birth, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+
+                            @Html.ValidationMessageFor(model => model.Emp_Date_of_Birth, "", new { @class = "text-danger" })
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group row">
+
+                        @Html.LabelFor(model => model.Emp_Date_of_Joining, "Date of Joining:", htmlAttributes: new { @class = "col-sm-3 col-form-label" })
+
+                        <div class="col-sm-9">
+
+                            @Html.EditorFor(model => model.Emp_Date_of_Joining, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+
+                            @Html.ValidationMessageFor(model => model.Emp_Date_of_Joining, "", new { @class = "text-danger" })
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group row">
+
+                        @Html.LabelFor(model => model.Emp_Dept_ID, "Department:", htmlAttributes: new { @class = "col-sm-3 col-form-label" })
+
+                        <div class="col-sm-9">
+
+                            @Html.DropDownList("Emp_Dept_ID", null, "Select Department", htmlAttributes: new { @class = "form-control" })
+
+                            @Html.ValidationMessageFor(model => model.Emp_Dept_ID, "", new { @class = "text-danger" })
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group row">
+
+                        @Html.LabelFor(model => model.Emp_Grade, "Grade:", htmlAttributes: new { @class = "col-sm-3 col-form-label" })
+
+                        <div class="col-sm-9">
+
+                            @Html.DropDownList("Emp_Grade", null, "Select Grade", htmlAttributes: new { @class = "form-control" })
+
+                            @Html.ValidationMessageFor(model => model.Emp_Grade, "", new { @class = "text-danger" })
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group row">
+
+                        @Html.LabelFor(model => model.Emp_Designation, "Designation:", htmlAttributes: new { @class = "col-sm-3 col-form-label" })
+
+                        <div class="col-sm-9">
+
+                            @Html.EditorFor(model => model.Emp_Designation, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Designation" } })
+
+                            @Html.ValidationMessageFor(model => model.Emp_Designation, "", new { @class = "text-danger" })
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group row">
+
+                        @Html.LabelFor(model => model.Emp_Salary, "Salary:", htmlAttributes: new { @class = "col-sm-3 col-form-label" })
+
+                        <div class="col-sm-9">
+
+                            @Html.EditorFor(model => model.Emp_Salary, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Salary" } })
+
+                            @Html.ValidationMessageFor(model => model.Emp_Salary, "", new { @class = "text-danger" })
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group row">
+
+                        @Html.LabelFor(model => model.Emp_Gender, "Gender:", htmlAttributes: new { @class = "col-sm-3 col-form-label" })
+
+                        <div class="col-sm-9">
+
+                            <div class="form-check form-check-inline">
+
+                                @Html.RadioButtonFor(model => model.Emp_Gender, "Male", new { @class = "form-check-input" })
+
+                                @Html.Label("Male", htmlAttributes: new { @class = "form-check-label" })
+
+                            </div>
+
+                            <div class="form-check form-check-inline">
+
+                                @Html.RadioButtonFor(model => model.Emp_Gender, "Female", new { @class = "form-check-input" })
+
+                                @Html.Label("Female", htmlAttributes: new { @class = "form-check-label" })
+
+                            </div>
+
+                            @Html.ValidationMessageFor(model => model.Emp_Gender, "", new { @class = "text-danger" })
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group row">
+
+                        @Html.LabelFor(model => model.Emp_Marital_Status, "Marital Status:", htmlAttributes: new { @class = "col-sm-3 col-form-label" })
+
+                        <div class="col-sm-9">
+
+                            @Html.DropDownListFor(model => model.Emp_Marital_Status, new List<SelectListItem>
+
+                                            {
+
+                    new SelectListItem { Text = "Select marital status", Value = "" },
+
+                    new SelectListItem { Text = "Single", Value = "Single" },
+
+                    new SelectListItem { Text = "Married", Value = "Married" },
+
+                    new SelectListItem { Text = "Divorced", Value = "Divorced" }
+
+                }, htmlAttributes: new { @class = "form-control" })
+
+                            @Html.ValidationMessageFor(model => model.Emp_Marital_Status, "", new { @class = "text-danger" })
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group row">
+
+                        @Html.LabelFor(model => model.Emp_Home_Address, "Address:", htmlAttributes: new { @class = "col-sm-3 col-form-label" })
+
+                        <div class="col-sm-9">
+
+                            @Html.EditorFor(model => model.Emp_Home_Address, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Address" } })
+
+                            @Html.ValidationMessageFor(model => model.Emp_Home_Address, "", new { @class = "text-danger" })
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group row">
+
+                        @Html.LabelFor(model => model.Emp_Contact_Num, "Mobile Number:", htmlAttributes: new { @class = "col-sm-3 col-form-label" })
+
+                        <div class="col-sm-9">
+
+                            @Html.EditorFor(model => model.Emp_Contact_Num, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Mobile Number" } })
+
+                            @Html.ValidationMessageFor(model => model.Emp_Contact_Num, "", new { @class = "text-danger" })
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group row">
+
+                        <div class="col-sm-9 offset-sm-3">
+
+                            <button type="submit" class="btn btn-primary">Create</button>
+
+                            <a href="@Url.Action("Index")" class="btn btn-secondary">Back to List</a>
+
+                        </div>
+
+                    </div>
+
+                </div>}
+<style>
+    .container {
+        background-color: #f8f9fa; /* Light background for the form */
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-control {
+        border-radius: 0.25rem;
+        border-color: #ced4da;
+        background-color: #fff;
+    }
+
+        .form-control:focus {
+            border-color: #80bdff;
+            box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
+        }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            border-color: #545b62;
+        }
+
+    .text-danger {
+        color: #dc3545;
+    }
+
+    .form-check-input {
+        margin-top: 0.3rem;
+    }
+
+    .form-check-label {
+        margin-left: 0.5rem;
+    }
+
+    .col-form-label {
+        font-weight: 600;
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+</style>
+
+

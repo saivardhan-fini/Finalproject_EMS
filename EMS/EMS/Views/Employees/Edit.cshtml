@@ -1,0 +1,214 @@
+﻿@model EMS.Models.Employee
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f9f9f9; /* Light gray background for the body */
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+
+    .page-title {
+        text-align: center;
+        color: #007bff; /* Primary color for headings */
+        margin-top: 20px;
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
+    .form-container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #ffffff; /* White background for form container */
+        border: 1px solid #dee2e6; /* Light gray border */
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-heading {
+        font-size: 1.5rem;
+        color: #007bff; /* Primary color for form headings */
+        margin-bottom: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .control-label {
+        font-weight: bold;
+        color: #007bff; /* Primary color for labels */
+        margin-bottom: 5px;
+    }
+
+    .form-control {
+        border-radius: 4px;
+        border: 1px solid #007bff; /* Primary color for form controls */
+        padding: 8px;
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-default {
+        background-color: #007bff; /* Primary color for buttons */
+        border: none;
+        color: #ffffff;
+        border-radius: 4px;
+        padding: 10px 20px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s;
+    }
+
+        .btn-default:hover {
+            background-color: #0056b3; /* Darker blue for hover */
+            transform: scale(1.02);
+        }
+
+    .text-danger {
+        color: #dc3545; /* Red color for validation errors */
+    }
+
+    .form-horizontal .form-group {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+    .form-horizontal .control-label {
+        flex: 0 0 200px; /* Fixed width for labels */
+    }
+
+    .form-horizontal .form-control {
+        flex: 1;
+    }
+</style>
+
+<h2 class="page-title">Edit Employee</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-container">
+        <h4 class="form-heading">Employee Details</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Emp_ID)
+
+        <div class="form-horizontal">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Emp_First_Name, htmlAttributes: new { @class = "control-label" })
+                <div>
+                    @Html.EditorFor(model => model.Emp_First_Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Emp_First_Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Emp_Last_Name, htmlAttributes: new { @class = "control-label" })
+                <div>
+                    @Html.EditorFor(model => model.Emp_Last_Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Emp_Last_Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Emp_Date_of_Birth, htmlAttributes: new { @class = "control-label" })
+                <div>
+                    @Html.EditorFor(model => model.Emp_Date_of_Birth, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Emp_Date_of_Birth, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Emp_Date_of_Joining, htmlAttributes: new { @class = "control-label" })
+                <div>
+                    @Html.EditorFor(model => model.Emp_Date_of_Joining, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Emp_Date_of_Joining, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Emp_Dept_ID, "Emp_Dept_ID", htmlAttributes: new { @class = "control-label" })
+                <div>
+                    @Html.DropDownList("Emp_Dept_ID", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Emp_Dept_ID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Emp_Grade, "Emp_Grade", htmlAttributes: new { @class = "control-label" })
+                <div>
+                    @Html.DropDownList("Emp_Grade", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Emp_Grade, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Emp_Designation, htmlAttributes: new { @class = "control-label" })
+                <div>
+                    @Html.EditorFor(model => model.Emp_Designation, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Emp_Designation, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Emp_Salary, htmlAttributes: new { @class = "control-label" })
+                <div>
+                    @Html.EditorFor(model => model.Emp_Salary, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Emp_Salary, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Emp_Gender, htmlAttributes: new { @class = "control-label" })
+                <div>
+                    @Html.EditorFor(model => model.Emp_Gender, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Emp_Gender, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Emp_Marital_Status, htmlAttributes: new { @class = "control-label" })
+                <div>
+                    @Html.EditorFor(model => model.Emp_Marital_Status, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Emp_Marital_Status, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Emp_Home_Address, htmlAttributes: new { @class = "control-label" })
+                <div>
+                    @Html.EditorFor(model => model.Emp_Home_Address, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Emp_Home_Address, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Emp_Contact_Num, htmlAttributes: new { @class = "control-label" })
+                <div>
+                    @Html.EditorFor(model => model.Emp_Contact_Num, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Emp_Contact_Num, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div>
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="text-center">
+    @Html.ActionLink("Back to List", "Index", new { @class = "btn btn-secondary" })
+</div>

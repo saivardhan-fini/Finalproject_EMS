@@ -1,0 +1,120 @@
+﻿@model EMS.Models.Admin
+@{
+    ViewBag.Title = "login";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-image: url('https://www.w3schools.com/w3images/tech.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            color: #ffffff;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 350px;
+            padding: 25px;
+            background-color: rgba(0, 0, 0, 0.8); /* Dark overlay background */
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            color: #ffffff;
+        }
+
+        .login-heading {
+            margin-bottom: 25px;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #007bff; /* Dodger Blue for the heading */
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+            .form-group label {
+                display: block;
+                margin-bottom: 6px;
+                font-weight: 500;
+                color: #ddd; /* Light gray for the label */
+            }
+
+        .form-control {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #007bff; /* Dodger Blue border */
+            border-radius: 6px;
+            font-size: 1.1rem;
+            color: #ffffff; /* White text color for input fields */
+            background-color: #333; /* Darker background for input fields */
+            box-sizing: border-box;
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 14px;
+            background-color: #007bff; /* Dodger Blue for the button */
+            color: #ffffff; /* White text color */
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+            .btn-login:hover {
+                background-color: #0056b3; /* Darker blue for hover effect */
+                transform: scale(1.02);
+            }
+
+        .error-message {
+            color: #dc3545; /* Bootstrap danger red for error messages */
+            margin-top: 12px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2 class="login-heading">Admin Login</h2>
+        <form action="#" method="post">
+            <div class="form-group">
+                <label for="adminId">Admin ID</label>
+                <input type="text" id="adminId" name="adminId" class="form-control" placeholder="Enter Admin ID" required>
+                <div class="error-message"></div>
+            </div>
+            <div class="form-group">
+                <label for="adminPassword">Password</label>
+                <input type="password" id="adminPassword" name="adminPassword" class="form-control" placeholder="Enter Password" required>
+                <div class="error-message"></div>
+            </div>
+            <button type="submit" class="btn-login">Login</button>
+        </form>
+    </div>
+</body>
+</html>
+

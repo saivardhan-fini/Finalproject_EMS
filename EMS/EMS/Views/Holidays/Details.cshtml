@@ -1,0 +1,134 @@
+﻿@model EMS.Models.Holiday
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2 class="page-title">Holiday Details</h2>
+
+<div class="form-container">
+    <h4 class="form-heading">Holiday Information</h4>
+    <hr class="form-separator" />
+
+    <dl class="dl-horizontal">
+        <dt class="form-label">
+            @Html.DisplayNameFor(model => model.HolidayID)
+        </dt>
+        <dd class="form-value">
+            @Html.DisplayFor(model => model.HolidayID)
+        </dd>
+
+        <dt class="form-label">
+            @Html.DisplayNameFor(model => model.HolidayName)
+        </dt>
+        <dd class="form-value">
+            @Html.DisplayFor(model => model.HolidayName)
+        </dd>
+
+        <dt class="form-label">
+            @Html.DisplayNameFor(model => model.HolidayDate)
+        </dt>
+        <dd class="form-value">
+            @Html.DisplayFor(model => model.HolidayDate)
+        </dd>
+    </dl>
+</div>
+
+<p class="back-link">
+    @Html.ActionLink("Edit", "Edit", new { id = Model.HolidayID }, new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("Back to List", "Index", new { @class = "btn btn-secondary" })
+</p>
+
+<style>
+    body {
+        font-family: 'Roboto', sans-serif;
+        background-color: #f0f0f0; /* Light gray background */
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+
+    .page-title {
+        text-align: center;
+        color: #007bff; /* Dodger Blue for headings */
+        margin-bottom: 30px;
+        font-size: 2rem;
+        font-weight: 700;
+    }
+
+    .form-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: rgba(0, 0, 0, 0.8); /* Dark overlay background */
+        border: 1px solid #ddd;
+        border-radius: 12px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+    }
+
+    .form-heading {
+        color: #007bff; /* Dodger Blue for subheadings */
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+
+    .form-separator {
+        border: none;
+        border-top: 2px solid #007bff; /* Dodger Blue for separator */
+        margin-bottom: 20px;
+    }
+
+    .dl-horizontal {
+        margin: 0;
+    }
+
+    .form-label {
+        font-weight: 500;
+        color: #ddd; /* Light gray for labels */
+    }
+
+    .form-value {
+        color: #ffffff; /* White text color for values */
+    }
+
+    .back-link {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        color: #ffffff;
+        border-radius: 6px;
+        padding: 10px 20px;
+        font-size: 1rem;
+        font-weight: 700;
+        text-decoration: none;
+        display: inline-block;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            transform: scale(1.02);
+        }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+        color: #ffffff;
+        border-radius: 6px;
+        padding: 8px 16px;
+        font-size: 0.875rem;
+        font-weight: 700;
+        text-decoration: none;
+        display: inline-block;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            transform: scale(1.02);
+        }
+</style>

@@ -1,0 +1,106 @@
+﻿@model IEnumerable<EMS.Models.Holiday>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="page-title">Holiday List</h2>
+
+<p class="text-center">
+    @Html.ActionLink("Create New", "Create", new { @class = "btn btn-primary" })
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th class="table-header">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.HolidayID }, new { @class = "btn btn-secondary btn-sm" }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.HolidayID }, new { @class = "btn btn-secondary btn-sm" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.HolidayID }, new { @class = "btn btn-secondary btn-sm" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<style>
+    body {
+        font-family: 'Roboto', sans-serif;
+        background-color: #f0f0f0; /* Light gray background for the page */
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+
+    .page-title {
+        text-align: center;
+        color: #007bff; /* Dodger Blue for headings */
+        margin-bottom: 30px;
+        font-size: 2rem;
+        font-weight: 700;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        color: #ffffff;
+        border-radius: 6px;
+        padding: 10px 20px;
+        font-size: 1rem;
+        font-weight: 700;
+        text-decoration: none;
+        display: inline-block;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            transform: scale(1.02);
+        }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+        color: #ffffff;
+        border-radius: 6px;
+        padding: 8px 16px;
+        font-size: 0.875rem;
+        font-weight: 700;
+        text-decoration: none;
+        display: inline-block;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            transform: scale(1.02);
+        }
+
+    .table {
+        width: 100%;
+        margin: 20px 0;
+        border-collapse: collapse;
+    }
+
+        .table th, .table td {
+            padding: 12px;
+            text-align: center;
+        }
+
+    .table-header {
+        background-color: #007bff; /* Dodger Blue for table header */
+        color: #ffffff;
+        font-weight: 700;
+    }
+
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: #f9f9f9; /* Light gray background for odd rows */
+    }
+</style>

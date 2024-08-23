@@ -1,0 +1,495 @@
+﻿@model IEnumerable<EMS.Models.Employee>
+@{
+    ViewBag.Title = "Home";
+}
+
+@*<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Welcome to Employee Management System</title>
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-image: url('https://static.vecteezy.com/system/resources/thumbnails/002/393/823/small/gradient-blue-background-free-vector.jpg');
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+
+            .container {
+                max-width: 1200px;
+                margin: auto;
+                padding: 20px;
+            }
+
+            h1 {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .category-box {
+                text-align: center;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                padding: 20px;
+                margin-bottom: 20px;
+                transition: all 0.3s;
+                background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+                cursor: pointer; /* Change cursor to pointer */
+            }
+
+                .category-box:hover {
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                }
+
+                .category-box i {
+                    font-size: 48px;
+                    margin-bottom: 10px;
+                }
+
+                .category-box h3 {
+                    margin-bottom: 10px;
+                }
+
+                .category-box p {
+                    color: #777;
+                }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Welcome to Employee Management System</h1>
+            <div class="row">
+                <div class="col-md-3">
+                    <a id="employees-link" href="#">
+                        <div class="category-box">
+                            <i class="fas fa-users"></i>
+                            <h3>Employees</h3>
+                            <p>View and manage employees</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3">
+                    <a id="departments-link" href="#">
+                        <div class="category-box">
+                            <i class="fas fa-building"></i>
+                            <h3>Departments</h3>
+                            <p>View and manage departments</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3">
+                    <a id="grades-link" href="#">
+                        <div class="category-box">
+                            <i class="fas fa-award"></i>
+                            <h3>Grades</h3>
+                            <p>View and manage grades</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3">
+                    <a id="holidays-link" href="#">
+                        <div class="category-box">
+                            <i class="fas fa-calendar-alt"></i>
+                            <h3>Holidays</h3>
+                            <p>View and manage holidays</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            document.getElementById("employees-link").addEventListener("mouseover", function() {
+                this.href = "/Employees/Index"; // Update this line
+            });
+            document.getElementById("departments-link").addEventListener("mouseover", function() {
+                this.href = "/Departments/Index"; // Update this line
+            });
+            document.getElementById("grades-link").addEventListener("mouseover", function() {
+                this.href = "/Grades/Index"; // Update this line
+            });
+            document.getElementById("holidays-link").addEventListener("mouseover", function() {
+                this.href = "/Holidays/Index"; // Update this line
+            });
+        </script>
+    </body>
+    </html>*@
+
+
+
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management System</title>
+    Google Font
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://www.w3schools.com/w3images/tech.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: black;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .col-md-3 {
+            flex: 1;
+            max-width: 250px;
+            margin: 10px;
+        }
+
+        .category-box {
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+            background-color: rgba(255, 255, 255, 0.9);
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+            .category-box:hover {
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+                transform: translateY(-5px);
+            }
+
+            .category-box i {
+                font-size: 48px;
+                margin-bottom: 10px;
+                color: #007bff;
+            }
+
+            .category-box h3 {
+                margin-bottom: 10px;
+                color: steelblue;
+                font-size: 2rem;
+                font-weight: 700;
+            }
+
+            .category-box p {
+                color: steelblue;
+                font-size: 1.5rem;
+            }
+
+            .category-box a {
+                text-decoration: none;
+                color: inherit;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="margin-top: 50px; color:black;">Welcome to the Employee Management System</h1>
+        <div class="row">
+            <div class="col-md-3">
+                <a id="employees-link" href="#">
+                    <div class="category-box">
+                        <i class="fas fa-users"></i>
+                        <h3>Employees</h3>
+                        <p>View and manage employees</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a id="departments-link" href="#">
+                    <div class="category-box">
+                        <i class="fas fa-building"></i>
+                        <h3>Departments</h3>
+                        <p>View and manage departments</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a id="grades-link" href="#">
+                    <div class="category-box">
+                        <i class="fas fa-award"></i>
+                        <h3>Grades</h3>
+                        <p>View and manage grades</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a id="holidays-link" href="#">
+                    <div class="category-box">
+                        <i class="fas fa-calendar-alt"></i>
+                        <h3>Holidays</h3>
+                        <p>View and manage holidays</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="contact-link">
+        <a href="@Url.Action("Contact", "Home")">Contact Us</a>
+    </div>
+    <script>
+        document.getElementById("employees-link").addEventListener("mouseover", function () {
+            this.href = "/Employees/Index";
+        });
+        document.getElementById("departments-link").addEventListener("mouseover", function () {
+            this.href = "/Departments/Index";
+        });
+        document.getElementById("grades-link").addEventListener("mouseover", function () {
+            this.href = "/Grades/Index";
+        });
+        document.getElementById("holidays-link").addEventListener("mouseover", function () {
+            this.href = "/Holidays/Index";
+        });
+    </script>-->
+<!--Font Awesome Icons (for the icons used) -->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js" integrity="sha512-ZsGZFkP5cxQXLUJ0kTbTXG2P8XtbGmvXZC3BlOWJZzEZ4cAqzz7g+eV7Exb6jFQ1h8ieQ60Prk6QpV2sQZC2kQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+</html>-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management System</title>
+     Google Font 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-image: url('https://www.w3schools.com/w3images/tech.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            color: #ffffff;
+            margin: 0;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 300px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+            z-index: 10;
+        }
+
+            .sidebar h2 {
+                font-size: 2rem;
+                margin-bottom: 20px;
+            }
+
+            .sidebar p {
+                font-size: 1.5rem;
+                text-align: center;
+            }
+
+        .container {
+            margin-left: 200px; /* Decrease this value to shift the content more to the left */
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.8); /* Light background for readability */
+            border-radius: 8px;
+            width: calc(100% - 200px); /* Adjust width to match the new margin-left value */
+            box-sizing: border-box; /* Include padding in width calculation */
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #333; /* Darker color for contrast */
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between; /* Distribute space evenly */
+            flex-wrap: wrap; /* Allow wrapping to fit the screen size */
+            gap: 20px; /* Space between items */
+            padding: 0; /* Remove padding to ensure proper centering */
+        }
+
+        .col-md-3 {
+            flex: 1;
+            max-width: calc(25% - 20px); /* Adjust for gap spacing */
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center; /* Center box within the column */
+        }
+
+        .category-box {
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 30px; /* Increased padding */
+            transition: all 0.3s;
+            background-color: rgba(255, 255, 255, 0.9);
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 100%; /* Ensure boxes take up full column width */
+        }
+
+            .category-box:hover {
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+                transform: translateY(-5px);
+            }
+
+            .category-box i {
+                font-size: 48px;
+                margin-bottom: 10px;
+                color: #007bff;
+            }
+
+            .category-box h3 {
+                margin-bottom: 10px;
+                color: #0056b3;
+                font-size: 1.8rem;
+                font-weight: 700;
+            }
+
+            .category-box p {
+                color: #0056b3;
+                font-size: 1.2rem;
+            }
+
+            .category-box a {
+                text-decoration: none;
+                color: inherit;
+            }
+
+        .contact-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+            .contact-link a {
+                color: #007bff;
+                text-decoration: none;
+                font-size: 1.5rem; /* Increased font size */
+                font-weight: bold;
+            }
+
+                .contact-link a:hover {
+                    text-decoration: underline;
+                }
+
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Infinite Computer Solutions</h2>
+        <p>Providing innovative IT solutions for businesses around the globe.</p>
+    </div>
+    <div class="container">
+        <h1 style="margin-top: 70px; color:black;" >Welcome to the Employee Management System</h1>
+        <div class="row">
+            <div class="col-md-3">
+                <a id="employees-link" href="#">
+                    <div class="category-box">
+                        <i class="fas fa-users"></i>
+                        <h3>Employees</h3>
+                        <p>View and manage employees</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a id="departments-link" href="#">
+                    <div class="category-box">
+                        <i class="fas fa-building"></i>
+                        <h3>Departments</h3>
+                        <p>View and manage departments</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a id="grades-link" href="#">
+                    <div class="category-box">
+                        <i class="fas fa-award"></i>
+                        <h3>Grades</h3>
+                        <p>View and manage grades</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a id="holidays-link" href="#">
+                    <div class="category-box">
+                        <i class="fas fa-calendar-alt"></i>
+                        <h3>Holidays</h3>
+                        <p>View and manage holidays</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="contact-link">
+        <a href="@Url.Action("Contact", "Home")">Contact Us</a>
+    </div>
+    <script>
+        document.getElementById("employees-link").addEventListener("mouseover", function () {
+            this.href = "/Employees/Index";
+        });
+        document.getElementById("departments-link").addEventListener("mouseover", function () {
+            this.href = "/Departments/Index";
+        });
+        document.getElementById("grades-link").addEventListener("mouseover", function () {
+            this.href = "/Grades/Index";
+        });
+        document.getElementById("holidays-link").addEventListener("mouseover", function () {
+            this.href = "/Holidays/Index";
+        });
+    </script>
+     Font Awesome Icons 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js" integrity="sha512-ZsGZFkP5cxQXLUJ0kTbTXG2P8XtbGmvXZC3BlOWJZzEZ4cAqzz7g+eV7Exb6jFQ1h8ieQ60Prk6QpV2sQZC2kQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+</html>
+
+
+
+
+
