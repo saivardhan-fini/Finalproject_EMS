@@ -4,13 +4,10 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="EmpDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'EmpDatabase.dbo.Admin' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+    <Schema Namespace="EmpDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Admin">
           <Key>
             <PropertyRef Name="AdminId" />
-            <PropertyRef Name="AdminPassword" />
           </Key>
           <Property Name="AdminId" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="AdminPassword" Type="varchar" MaxLength="50" Nullable="false" />
@@ -50,19 +47,15 @@ warning 6002: The table/view 'EmpDatabase.dbo.Admin' does not have a primary key
           <Property Name="Min_Salary" Type="decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="Max_Salary" Type="decimal" Precision="10" Scale="2" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'EmpDatabase.dbo.Holiday' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Holiday">
           <Key>
             <PropertyRef Name="HolidayID" />
-            <PropertyRef Name="HolidayName" />
-            <PropertyRef Name="HolidayDate" />
           </Key>
           <Property Name="HolidayID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="HolidayName" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="HolidayDate" Type="date" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Employee__Emp_De__403A8C7D">
+        <Association Name="FK__Employee__Emp_De__45F365D3">
           <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
           <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
           <ReferentialConstraint>
@@ -74,7 +67,7 @@ warning 6002: The table/view 'EmpDatabase.dbo.Holiday' does not have a primary k
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Employee__Emp_Gr__412EB0B6">
+        <Association Name="FK__Employee__Emp_Gr__46E78A0C">
           <End Role="Grade_master" Type="Self.Grade_master" Multiplicity="1" />
           <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
           <ReferentialConstraint>
@@ -86,34 +79,34 @@ warning 6002: The table/view 'EmpDatabase.dbo.Holiday' does not have a primary k
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="AddHoliday" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="HolidayName" Type="varchar" Mode="In" />
+          <Parameter Name="HolidayDate" Type="date" Mode="In" />
+        </Function>
+        <Function Name="DeleteHoliday" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="HolidayID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UpdateHoliday" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="HolidayID" Type="int" Mode="In" />
+          <Parameter Name="HolidayName" Type="varchar" Mode="In" />
+          <Parameter Name="HolidayDate" Type="date" Mode="In" />
+        </Function>
         <EntityContainer Name="EmpDatabaseModelStoreContainer">
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Grade_master" EntityType="Self.Grade_master" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Admin" EntityType="Self.Admin" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Admin].[AdminId] AS [AdminId], 
-    [Admin].[AdminPassword] AS [AdminPassword]
-    FROM [dbo].[Admin] AS [Admin]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Holiday" EntityType="Self.Holiday" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Holiday].[HolidayID] AS [HolidayID], 
-    [Holiday].[HolidayName] AS [HolidayName], 
-    [Holiday].[HolidayDate] AS [HolidayDate]
-    FROM [dbo].[Holiday] AS [Holiday]</DefiningQuery>
-          </EntitySet>
-          <AssociationSet Name="FK__Employee__Emp_De__403A8C7D" Association="Self.FK__Employee__Emp_De__403A8C7D">
+          <EntitySet Name="Holiday" EntityType="Self.Holiday" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Employee__Emp_De__45F365D3" Association="Self.FK__Employee__Emp_De__45F365D3">
             <End Role="Department" EntitySet="Department" />
             <End Role="Employee" EntitySet="Employee" />
           </AssociationSet>
-          <AssociationSet Name="FK__Employee__Emp_Gr__412EB0B6" Association="Self.FK__Employee__Emp_Gr__412EB0B6">
+          <AssociationSet Name="FK__Employee__Emp_Gr__46E78A0C" Association="Self.FK__Employee__Emp_Gr__46E78A0C">
             <End Role="Grade_master" EntitySet="Grade_master" />
             <End Role="Employee" EntitySet="Employee" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="EmpDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -156,24 +149,6 @@ warning 6002: The table/view 'EmpDatabase.dbo.Holiday' does not have a primary k
           <Property Name="Max_Salary" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
           <NavigationProperty Name="Employees" Relationship="Self.FK__Employee__Emp_Gr__412EB0B6" FromRole="Grade_master" ToRole="Employee" />
         </EntityType>
-        <EntityType Name="Admin">
-          <Key>
-            <PropertyRef Name="AdminId" />
-            <PropertyRef Name="AdminPassword" />
-          </Key>
-          <Property Name="AdminId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="AdminPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Holiday">
-          <Key>
-            <PropertyRef Name="HolidayID" />
-            <PropertyRef Name="HolidayName" />
-            <PropertyRef Name="HolidayDate" />
-          </Key>
-          <Property Name="HolidayID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="HolidayName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HolidayDate" Type="DateTime" Nullable="false" Precision="0" />
-        </EntityType>
         <Association Name="FK__Employee__Emp_De__403A8C7D">
           <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
           <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
@@ -202,8 +177,6 @@ warning 6002: The table/view 'EmpDatabase.dbo.Holiday' does not have a primary k
           <EntitySet Name="Departments" EntityType="Self.Department" />
           <EntitySet Name="Employees" EntityType="Self.Employee" />
           <EntitySet Name="Grade_master" EntityType="Self.Grade_master" />
-          <EntitySet Name="Admins" EntityType="Self.Admin" />
-          <EntitySet Name="Holidays" EntityType="Self.Holiday" />
           <AssociationSet Name="FK__Employee__Emp_De__403A8C7D" Association="Self.FK__Employee__Emp_De__403A8C7D">
             <End Role="Department" EntitySet="Departments" />
             <End Role="Employee" EntitySet="Employees" />
@@ -212,7 +185,36 @@ warning 6002: The table/view 'EmpDatabase.dbo.Holiday' does not have a primary k
             <End Role="Grade_master" EntitySet="Grade_master" />
             <End Role="Employee" EntitySet="Employees" />
           </AssociationSet>
+          <EntitySet Name="Admins" EntityType="EmpDatabaseModel.Admin" />
+          <EntitySet Name="Holidays" EntityType="EmpDatabaseModel.Holiday" />
+          <FunctionImport Name="AddHoliday">
+            <Parameter Name="HolidayName" Mode="In" Type="String" />
+            <Parameter Name="HolidayDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteHoliday">
+            <Parameter Name="HolidayID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateHoliday">
+            <Parameter Name="HolidayID" Mode="In" Type="Int32" />
+            <Parameter Name="HolidayName" Mode="In" Type="String" />
+            <Parameter Name="HolidayDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
         </EntityContainer>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Name="AdminId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AdminPassword" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Holiday">
+          <Key>
+            <PropertyRef Name="HolidayID" />
+          </Key>
+          <Property Name="HolidayID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HolidayName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="HolidayDate" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -260,20 +262,23 @@ warning 6002: The table/view 'EmpDatabase.dbo.Holiday' does not have a primary k
           <EntitySetMapping Name="Admins">
             <EntityTypeMapping TypeName="EmpDatabaseModel.Admin">
               <MappingFragment StoreEntitySet="Admin">
-                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
                 <ScalarProperty Name="AdminPassword" ColumnName="AdminPassword" />
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Holidays">
             <EntityTypeMapping TypeName="EmpDatabaseModel.Holiday">
               <MappingFragment StoreEntitySet="Holiday">
-                <ScalarProperty Name="HolidayID" ColumnName="HolidayID" />
-                <ScalarProperty Name="HolidayName" ColumnName="HolidayName" />
                 <ScalarProperty Name="HolidayDate" ColumnName="HolidayDate" />
+                <ScalarProperty Name="HolidayName" ColumnName="HolidayName" />
+                <ScalarProperty Name="HolidayID" ColumnName="HolidayID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="AddHoliday" FunctionName="EmpDatabaseModel.Store.AddHoliday" />
+          <FunctionImportMapping FunctionImportName="DeleteHoliday" FunctionName="EmpDatabaseModel.Store.DeleteHoliday" />
+          <FunctionImportMapping FunctionImportName="UpdateHoliday" FunctionName="EmpDatabaseModel.Store.UpdateHoliday" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

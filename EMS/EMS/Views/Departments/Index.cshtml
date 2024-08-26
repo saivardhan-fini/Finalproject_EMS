@@ -4,10 +4,9 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("CREATE NEW", "Create")
 </p>
 
 <table class="table">
@@ -46,10 +45,16 @@
 <style>
     body {
         font-family: 'Roboto', sans-serif;
-        background-color: #f0f0f0; /* Light gray background */
-        color: #333;
+        background-image: url('https://www.the-corporate.com/public/profile_images/41765-1711004313.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+        color: #ffffff;
         margin: 0;
-        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     h2 {
@@ -108,7 +113,7 @@
         display: inline-block;
         padding: 8px 12px;
         border-radius: 6px;
-        font-size: 1rem;
+        font-size: 1.4rem;
         font-weight: 700;
         text-align: center;
         text-decoration: none;
@@ -118,7 +123,7 @@
     }
 
     .btn-primary {
-        background-color: #007bff; /* Dodger Blue */
+        background-color: wheat; /* Dodger Blue */
         border: none;
     }
 
@@ -128,7 +133,7 @@
         }
 
     .btn-secondary {
-        background-color: #6c757d; /* Secondary color */
+        background-color: ghostwhite; /* Secondary color */
         border: none;
     }
 

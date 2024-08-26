@@ -32,11 +32,17 @@
     <style>
         body {
             font-family: 'Roboto', sans-serif;
+            background-image: url('https://www.the-corporate.com/public/profile_images/41765-1711004313.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            color: #ffffff;
             margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-
         .container {
             max-width: 1200px;
             margin: auto;
@@ -76,12 +82,15 @@
     <div class="container">
         <h1>@ViewBag.Title</h1>
         <div class="contact-info">
-            <h2>Contact Information</h2>
-            <address>
-                @Model.CompanyName<br />
-                @Model.Address<br />
-                <abbr title="Phone">P:</abbr> @Model.Phone
-            </address>
+            <h2 style="color:dodgerblue">Contact Information</h2>
+            @foreach(var address in Model.Addresses)
+            {
+                <address>
+                    @address.Street<br/>
+                    @address.City,@address.State @address.ZipCode<br/>
+                    <abbr title="Phone">P:</abbr> @address.PhoneNumber
+                </address>
+            }
             <address>
                 <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
                 <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>

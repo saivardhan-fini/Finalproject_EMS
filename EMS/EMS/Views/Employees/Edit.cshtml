@@ -6,11 +6,17 @@
 
 <style>
     body {
-        font-family: 'Arial', sans-serif;
-        background-color: #f9f9f9; /* Light gray background for the body */
-        color: #333;
+        font-family: 'Roboto', sans-serif;
+        background-image: url('https://www.the-corporate.com/public/profile_images/41765-1711004313.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+        color: #ffffff;
         margin: 0;
-        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .page-title {
@@ -193,15 +199,15 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Emp_Contact_Num, htmlAttributes: new { @class = "control-label" })
-                <div>
+                @Html.LabelFor(model => model.Emp_Contact_Num, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
                     @Html.EditorFor(model => model.Emp_Contact_Num, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Emp_Contact_Num, "", new { @class = "text-danger" })
                 </div>
             </div>
 
             <div class="form-group">
-                <div>
+                <div class="">
                     <input type="submit" value="Save" class="btn btn-default" />
                 </div>
             </div>

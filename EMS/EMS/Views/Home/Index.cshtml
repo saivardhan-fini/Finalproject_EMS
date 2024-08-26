@@ -282,7 +282,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee Management System</title>
+    <title style="background-color:aqua">EMPLOYEE MANAGEMENT SYSTEM</title>
      Google Font 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -294,15 +294,14 @@
 
         body {
             font-family: 'Roboto', sans-serif;
-            background-image: url('https://www.w3schools.com/w3images/tech.jpg');
-            background-size: cover;
+            background-image: url('https://cdn.azeusconvene.com/wp-content/uploads/09172020_Banner.jpg'); /* Set your background image here */
+            background-size: cover; /* Cover the entire page */
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-position: center;
             color: #ffffff;
             margin: 0;
         }
-
         .sidebar {
             position: fixed;
             top: 0;
@@ -468,7 +467,7 @@
         </div>
     </div>
     <div class="contact-link">
-        <a href="@Url.Action("Contact", "Home")">Contact Us</a>
+        <a href="@Url.Action("contact", "Home")">Contact Us</a>
     </div>
     <script>
         document.getElementById("employees-link").addEventListener("mouseover", function () {
@@ -478,7 +477,7 @@
             this.href = "/Departments/Index";
         });
         document.getElementById("grades-link").addEventListener("mouseover", function () {
-            this.href = "/Grades/Index";
+            this.href = "/Grade_Master/Index";
         });
         document.getElementById("holidays-link").addEventListener("mouseover", function () {
             this.href = "/Holidays/Index";

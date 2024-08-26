@@ -1,6 +1,6 @@
 CREATE DATABASE EmpDatabase;
  
-
+ use EmpDatabase
  
 CREATE TABLE Employee (
     Emp_ID INT PRIMARY KEY,
@@ -39,6 +39,7 @@ insert into Admin values('Admin','Admin')
  select * from Admin
  select * from Grade_master
 
+ 
 CREATE TABLE Grade_master (
     Grade_Code VARCHAR(10) PRIMARY KEY,
     Description VARCHAR(50) not null,
@@ -54,4 +55,40 @@ CREATE TABLE Holiday (
 
 
 
-
+CREATE PROCEDURE AddHoliday
+    @HolidayName VARCHAR(100),
+    @HolidayDate DATE
+AS
+BEGIN
+    INSERT INTO Holiday (HolidayName, HolidayDate)
+    VALUES (@HolidayName, @HolidayDate);
+END
+GO
+CREATE PROCEDURE UpdateHoliday
+    @HolidayID INT,
+    @HolidayName VARCHAR(100),
+    @HolidayDate DATE
+AS
+BEGIN
+    UPDATE Holiday
+    SET HolidayName = @HolidayName,
+        HolidayDate = @HolidayDate
+    WHERE HolidayID = @HolidayID;
+END
+GO
+ select * from Holiday
+ 
+CREATE PROCEDURE DeleteHoliday
+    @HolidayID INT
+AS
+BEGIN
+    DELETE FROM Holiday
+    WHERE HolidayID = @HolidayID;
+END
+GO
+ 
+ALTER TABLE Admin
+ADD CONSTRAINT PK_Admin PRIMARY KEY (AdminID);
+ 
+ALTER TABLE Holiday
+ADD CONSTRAINT PK_Holiday PRIMARY KEY (HolidayID);

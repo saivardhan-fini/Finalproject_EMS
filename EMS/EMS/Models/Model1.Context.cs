@@ -12,6 +12,8 @@ namespace EMS.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class EmpDatabaseEntities1 : DbContext
     {
@@ -30,5 +32,44 @@ namespace EMS.Models
         public virtual DbSet<Grade_master> Grade_master { get; set; }
         public virtual DbSet<Admin> Admins { get; set; }
         public virtual DbSet<Holiday> Holidays { get; set; }
+    
+        public virtual int AddHoliday(string holidayName, Nullable<System.DateTime> holidayDate)
+        {
+            var holidayNameParameter = holidayName != null ?
+                new ObjectParameter("HolidayName", holidayName) :
+                new ObjectParameter("HolidayName", typeof(string));
+    
+            var holidayDateParameter = holidayDate.HasValue ?
+                new ObjectParameter("HolidayDate", holidayDate) :
+                new ObjectParameter("HolidayDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddHoliday", holidayNameParameter, holidayDateParameter);
+        }
+    
+        public virtual int DeleteHoliday(Nullable<int> holidayID)
+        {
+            var holidayIDParameter = holidayID.HasValue ?
+                new ObjectParameter("HolidayID", holidayID) :
+                new ObjectParameter("HolidayID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteHoliday", holidayIDParameter);
+        }
+    
+        public virtual int UpdateHoliday(Nullable<int> holidayID, string holidayName, Nullable<System.DateTime> holidayDate)
+        {
+            var holidayIDParameter = holidayID.HasValue ?
+                new ObjectParameter("HolidayID", holidayID) :
+                new ObjectParameter("HolidayID", typeof(int));
+    
+            var holidayNameParameter = holidayName != null ?
+                new ObjectParameter("HolidayName", holidayName) :
+                new ObjectParameter("HolidayName", typeof(string));
+    
+            var holidayDateParameter = holidayDate.HasValue ?
+                new ObjectParameter("HolidayDate", holidayDate) :
+                new ObjectParameter("HolidayDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateHoliday", holidayIDParameter, holidayNameParameter, holidayDateParameter);
+        }
     }
 }

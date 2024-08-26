@@ -1,14 +1,133 @@
-﻿@model EMS.Models.Admin
-@{
-    ViewBag.Title = "login";
-}
+﻿@*@model EMS.Models.Admin
+    @{
+        ViewBag.Title = "login";
+    }
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+        <style>
+            html, body {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                font-family: 'Roboto', sans-serif;
+                background-image: url('https://www.w3schools.com/w3images/forestbridge.jpg');
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-position: center;
+                color: #ffffff;
+                margin: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .login-container {
+                width: 100%;
+                max-width: 350px;
+                padding: 25px;
+                background-color: rgba(0, 0, 0, 0.8); /* Dark overlay background */
+                border: 1px solid #ddd;
+                border-radius: 12px;
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+                text-align: center;
+                color: #ffffff;
+            }
+
+            .login-heading {
+                margin-bottom: 25px;
+                font-size: 2rem;
+                font-weight: 700;
+                color: #007bff; /* Dodger Blue for the heading */
+            }
+
+            .form-group {
+                margin-bottom: 20px;
+                text-align: left;
+            }
+
+                .form-group label {
+                    display: block;
+                    margin-bottom: 6px;
+                    font-weight: 500;
+                    color: #ddd; /* Light gray for the label */
+                }
+
+            .form-control {
+                width: 100%;
+                padding: 14px;
+                border: 1px solid #007bff; /* Dodger Blue border */
+                border-radius: 6px;
+                font-size: 1.1rem;
+                color: #ffffff; /* White text color for input fields */
+                background-color: #333; /* Darker background for input fields */
+                box-sizing: border-box;
+            }
+
+            .btn-login {
+                width: 100%;
+                padding: 14px;
+                background-color: #007bff; /* Dodger Blue for the button */
+                color: #ffffff; /* White text color */
+                border: none;
+                border-radius: 6px;
+                font-size: 1.1rem;
+                font-weight: 700;
+                cursor: pointer;
+                transition: background-color 0.3s ease, transform 0.2s ease;
+            }
+
+                .btn-login:hover {
+                    background-color: #0056b3; /* Darker blue for hover effect */
+                    transform: scale(1.02);
+                }
+
+            .error-message {
+                color: #dc3545; /* Bootstrap danger red for error messages */
+                margin-top: 12px;
+                font-size: 0.9rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="login-container">
+            <h2 class="login-heading">Admin Login</h2>
+            <form action="#" method="post">
+                <div class="form-group">
+                    <label for="adminId">Admin ID</label>
+                    <input type="text" id="adminId" name="adminId" class="form-control" placeholder="Enter Admin ID" required>
+                    <div class="error-message"></div>
+                </div>
+                <div class="form-group">
+                    <label for="adminPassword">Password</label>
+                    <input type="password" id="adminPassword" name="adminPassword" class="form-control" placeholder="Enter Password" required>
+                    <div class="error-message"></div>
+                </div>
+                <button type="submit" class="btn-login">Login</button>
+            </form>
+        </div>
+    </body>
+    </html>*@
+
+@model EMS.Models.Admin
+
+@{ ViewBag.Title = "Admin Login"; }
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>@ViewBag.Title</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         html, body {
@@ -19,7 +138,7 @@
 
         body {
             font-family: 'Roboto', sans-serif;
-            background-image: url('https://www.w3schools.com/w3images/tech.jpg');
+            background-image: url('https://cdn.azeusconvene.com/wp-content/uploads/09172020_Banner.jpg');
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
@@ -92,29 +211,74 @@
             }
 
         .error-message {
-            color: #dc3545; /* Bootstrap danger red for error messages */
+            color: white; /* Bootstrap danger red for error messages */
             margin-top: 12px;
-            font-size: 0.9rem;
+            font-size: 1.4rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
     </style>
 </head>
 <body>
+    @*<div class="login-container">
+            <h2 class="login-heading">Admin Login</h2>
+            <form action="#" method="post">
+                <div class="form-group">
+                    <label for="adminId">Admin ID</label>
+                    <input type="text" id="adminId" name="adminId" class="form-control" placeholder="Enter Admin ID" required>
+                    <div class="error-message"></div>
+                </div>
+                <div class="form-group">
+                    <label for="adminPassword">Password</label>
+                    <input type="password" id="adminPassword" name="adminPassword" class="form-control" placeholder="Enter Password" required>
+                    <div class="error-message">
+                    <p>PLEASE ENTER RIGHT ADMIN ID AND PASSWORD</p>
+                    </div>
+                </div>
+                <button type="submit" class="btn-login">Login</button>
+            </form>
+        </div>*@
+
     <div class="login-container">
         <h2 class="login-heading">Admin Login</h2>
-        <form action="#" method="post">
+
+        @using (Html.BeginForm())
+
+        {
+
+            @Html.AntiForgeryToken()
             <div class="form-group">
-                <label for="adminId">Admin ID</label>
-                <input type="text" id="adminId" name="adminId" class="form-control" placeholder="Enter Admin ID" required>
-                <div class="error-message"></div>
-            </div>
-            <div class="form-group">
-                <label for="adminPassword">Password</label>
-                <input type="password" id="adminPassword" name="adminPassword" class="form-control" placeholder="Enter Password" required>
-                <div class="error-message"></div>
-            </div>
-            <button type="submit" class="btn-login">Login</button>
-        </form>
+
+                @Html.LabelFor(model => model.AdminId, htmlAttributes: new { @class = "control-label" })
+
+                @Html.PasswordFor(model => model.AdminId, new { @class = "form-control", placeholder = "Enter Admin ID", required = "required" })
+
+                @Html.ValidationMessageFor(model => model.AdminId, "", new { @class = "text-danger" })
+
+             
+   
     </div>
-</body>
-</html>
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.AdminPassword, htmlAttributes: new { @class = "control-label" })
+
+                @Html.PasswordFor(model => model.AdminPassword, new { @class = "form-control", placeholder = "Enter Password", required = "required" })
+
+                @Html.ValidationMessageFor(model => model.AdminPassword, "", new { @class = "text-danger" })
+                <p>PLEASE ENTER CORRECT ADMINID AND PASSWORD</p>
+            </div>
+    <div class="form-group">
+        <button type="submit" class="btn-login">Login</button>
+    </div>
+}
+        </div>
+
+        @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+
+        {
+            <div class="alert alert-danger">@ViewBag.ErrorMessage</div>
+        }
+       
+        </body>
+    </html>
+
 

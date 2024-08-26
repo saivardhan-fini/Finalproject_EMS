@@ -1,168 +1,535 @@
-﻿@model EMS.Models.Holiday
+﻿@*@model EMS.Models.Holiday
 
-@{
-    ViewBag.Title = "Create";
-}
+    @{
+        ViewBag.Title = "Create";
+    }
 
-<h2 class="page-title">Create Holiday</h2>
+    <h2 class="page-title">Create Holiday</h2>
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
 
-    <div class="form-container">
-        <h4 class="form-heading">Holiday Details</h4>
-        <hr class="form-separator" />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-container">
+            <h4 class="form-heading">Holiday Details</h4>
+            <hr class="form-separator" />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.HolidayID, htmlAttributes: new { @class = "form-label" })
-            <div class="form-input">
-                @Html.EditorFor(model => model.HolidayID, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.HolidayID, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.HolidayID, htmlAttributes: new { @class = "form-label" })
+                <div class="form-input">
+                    @Html.EditorFor(model => model.HolidayID, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.HolidayID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.HolidayName, htmlAttributes: new { @class = "form-label" })
+                <div class="form-input">
+                    @Html.EditorFor(model => model.HolidayName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.HolidayName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.HolidayDate, htmlAttributes: new { @class = "form-label" })
+                <div class="form-input">
+                    @Html.EditorFor(model => model.HolidayDate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.HolidayDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </div>
+    }
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.HolidayName, htmlAttributes: new { @class = "form-label" })
-            <div class="form-input">
+    <div class="back-link">
+        @Html.ActionLink("Back to List", "Index", new { @class = "btn btn-secondary" })
+    </div>*@
+
+
+@*@model EMS.Models.Holiday
+
+    @using (Html.BeginForm())
+
+    {
+
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.HolidayName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+
+                    @Html.EditorFor(model => model.HolidayName, new { htmlAttributes = new { @class = "form-control" } })
+
+                    @Html.ValidationMessageFor(model => model.HolidayName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.HolidayDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+
+                    @Html.EditorFor(model => model.HolidayDate, new { htmlAttributes = new { @class = "form-control" } })
+
+                    @Html.ValidationMessageFor(model => model.HolidayDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>}
+
+    <style>
+
+        /* General Styles */
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-image: url('https://www.the-corporate.com/public/profile_images/41765-1711004313.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            color: #ffffff;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Ensure body takes full viewport height */
+        }
+
+        /* Page Title */
+
+        .page-title {
+            text-align: center;
+            color: #007bff; /* Dodger Blue for titles */
+
+            margin-bottom: 30px;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        /* Page Subtitle */
+
+        .page-subtitle {
+            text-align: center;
+            color: #007bff; /* Dodger Blue for subtitles */
+
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            font-weight: 400;
+        }
+
+        /* Form Container */
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.8); /* Dark overlay background */
+
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Form Heading */
+
+        .form-heading {
+            color: #007bff; /* Dodger Blue for form headings */
+
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        /* Form Separator */
+
+        .form-separator {
+            border: none;
+            border-top: 2px solid #007bff; /* Dodger Blue separator */
+
+            margin-bottom: 20px;
+        }
+
+        /* Form Group */
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Form Labels */
+
+        .control-label {
+            font-weight: 600;
+            color: #007bff; /* Dodger Blue for labels */
+
+            margin-bottom: 8px;
+        }
+
+        /* Form Controls */
+
+        .form-control {
+            border-radius: 4px;
+            border: 1px solid #ced4da; /* Light gray border */
+
+            background-color: #ffffff; /* White background */
+
+            color: #495057; /* Darker text color */
+
+            padding: 8px;
+            margin-top: 4px;
+        }
+
+            .form-control:focus {
+                border-color: #007bff; /* Dodger Blue border on focus */
+
+                box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25); /* Blue shadow on focus */
+            }
+
+        /* Buttons */
+
+        .btn-primary {
+            background-color: #007bff; /* Dodger Blue */
+
+            border: none;
+            color: #ffffff;
+            border-radius: 6px;
+            padding: 14px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+            .btn-primary:hover {
+                background-color: #0056b3; /* Darker blue on hover */
+
+                transform: scale(1.02);
+            }
+
+        .btn-secondary {
+            background-color: #6c757d; /* Medium gray */
+
+            border: none;
+            color: #ffffff;
+            border-radius: 6px;
+            padding: 14px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+            .btn-secondary:hover {
+                background-color: #5a6268; /* Darker gray on hover */
+
+                transform: scale(1.02);
+            }
+
+        .btn-danger {
+            background-color: #dc3545; /* Red for danger buttons */
+
+            border: none;
+            color: #ffffff;
+            border-radius: 6px;
+            padding: 14px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+            .btn-danger:hover {
+                background-color: #c82333; /* Darker red on hover */
+
+                transform: scale(1.02);
+            }
+
+        /* Danger Text */
+
+        .text-danger {
+            color: #dc3545; /* Red color for error messages */
+        }
+
+        /* Form Actions */
+
+        .form-actions {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Back Link */
+
+        .back-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>*@
+
+
+@model EMS.Models.Holiday
+
+@using (Html.BeginForm())
+
+{
+
+    @Html.AntiForgeryToken()
+    <div class="form-container">
+        <h2 class="form-heading">Create Holiday</h2>
+        <hr class="form-separator" />
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group centered">
+
+            @Html.LabelFor(model => model.HolidayName, htmlAttributes: new { @class = "control-label" })
+            <div class="form-control-box">
+
                 @Html.EditorFor(model => model.HolidayName, new { htmlAttributes = new { @class = "form-control" } })
+
                 @Html.ValidationMessageFor(model => model.HolidayName, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.HolidayDate, htmlAttributes: new { @class = "form-label" })
-            <div class="form-input">
+        <div class="form-group centered">
+
+            @Html.LabelFor(model => model.HolidayDate, htmlAttributes: new { @class = "control-label" })
+            <div class="form-control-box">
+
                 @Html.EditorFor(model => model.HolidayDate, new { htmlAttributes = new { @class = "form-control" } })
+
                 @Html.ValidationMessageFor(model => model.HolidayDate, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-actions">
-            <input type="submit" value="Create" class="btn btn-primary" />
+            <input type="submit" value="Create" class="btn-primary" />
         </div>
     </div>
 }
-
-<div class="back-link">
-    @Html.ActionLink("Back to List", "Index", new { @class = "btn btn-secondary" })
-</div>
-
 <style>
+
+    /* General Styles */
+
     body {
         font-family: 'Roboto', sans-serif;
-        background-color: #f0f0f0; /* Light gray background */
-        color: #333;
+        background-image: url('https://www.the-corporate.com/public/profile_images/41765-1711004313.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+        color: #ffffff;
         margin: 0;
-        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Ensure body takes full viewport height */
     }
+
+    /* Page Title */
 
     .page-title {
         text-align: center;
-        color: #007bff; /* Dodger Blue for headings */
+        color: #007bff; /* Dodger Blue for titles */
+
         margin-bottom: 30px;
         font-size: 2rem;
         font-weight: 700;
     }
 
+    /* Page Subtitle */
+
+    .page-subtitle {
+        text-align: center;
+        color: #007bff; /* Dodger Blue for subtitles */
+
+        margin-bottom: 20px;
+        font-size: 1.5rem;
+        font-weight: 400;
+    }
+
+    /* Form Container */
+
     .form-container {
-        max-width: 800px;
+        max-width: 600px;
         margin: 0 auto;
         padding: 20px;
         background-color: rgba(0, 0, 0, 0.8); /* Dark overlay background */
+
         border: 1px solid #ddd;
         border-radius: 12px;
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
     }
 
+    /* Form Heading */
+
     .form-heading {
-        color: #007bff; /* Dodger Blue for subheadings */
+        color: #007bff; /* Dodger Blue for form headings */
+
         font-size: 1.5rem;
         margin-bottom: 15px;
+        text-align: center;
     }
+
+    /* Form Separator */
 
     .form-separator {
         border: none;
-        border-top: 2px solid #007bff; /* Dodger Blue for separator */
+        border-top: 2px solid #007bff; /* Dodger Blue separator */
+
         margin-bottom: 20px;
     }
+
+    /* Form Group */
 
     .form-group {
-        margin-bottom: 20px;
+        margin-bottom: 1.5rem;
+        display: flex;
+        flex-direction: column;
     }
 
-    .form-label {
-        display: block;
+    /* Form Labels */
+
+    .control-label {
+        font-weight: 600;
+        color: #007bff; /* Dodger Blue for labels */
+
         margin-bottom: 8px;
-        font-weight: 500;
-        color: #ddd; /* Light gray for labels */
     }
 
-    .form-input {
-        width: 100%;
-    }
+    /* Form Controls */
 
     .form-control {
-        border-radius: 0.25rem;
+        border-radius: 4px;
         border: 1px solid #ced4da; /* Light gray border */
-        background-color: #fff; /* White background */
+
+        background-color: #ffffff; /* White background */
+
         color: #495057; /* Darker text color */
+
+        padding: 8px;
+        margin-top: 4px;
     }
 
         .form-control:focus {
             border-color: #007bff; /* Dodger Blue border on focus */
-            box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
+
+            box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25); /* Blue shadow on focus */
         }
 
+    /* Box Styling for Form Controls */
+
+    .form-control-box {
+        border: 1px solid #ced4da; /* Light gray border */
+
+        border-radius: 8px;
+        padding: 10px;
+        background-color: #ffffff; /* White background */
+
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow */
+
+        margin-top: 4px;
+        width: 100%; /* Make input fields span full width */
+    }
+
+    .form-group.centered {
+        display: flex;
+        justify-content: center; /* Center the content horizontally */
+    }
+
+    /* Buttons */
+
     .btn-primary {
-        background-color: #007bff;
-        border-color: #007bff;
+        background-color: #007bff; /* Dodger Blue */
+
+        border: none;
         color: #ffffff;
         border-radius: 6px;
-        padding: 10px 20px;
-        font-size: 1rem;
+        padding: 14px;
+        font-size: 1.1rem;
         font-weight: 700;
-        text-decoration: none;
-        display: inline-block;
+        cursor: pointer;
         transition: background-color 0.3s ease, transform 0.2s ease;
     }
 
         .btn-primary:hover {
-            background-color: #0056b3;
+            background-color: #0056b3; /* Darker blue on hover */
+
             transform: scale(1.02);
         }
 
     .btn-secondary {
-        background-color: #6c757d;
-        border-color: #6c757d;
+        background-color: #6c757d; /* Medium gray */
+
+        border: none;
         color: #ffffff;
         border-radius: 6px;
-        padding: 8px 16px;
-        font-size: 0.875rem;
+        padding: 14px;
+        font-size: 1.1rem;
         font-weight: 700;
-        text-decoration: none;
-        display: inline-block;
+        cursor: pointer;
         transition: background-color 0.3s ease, transform 0.2s ease;
     }
 
         .btn-secondary:hover {
-            background-color: #5a6268;
+            background-color: #5a6268; /* Darker gray on hover */
+
             transform: scale(1.02);
         }
 
-    .text-danger {
-        color: #dc3545; /* Danger color for error messages */
+    .btn-danger {
+        background-color: #dc3545; /* Red for danger buttons */
+
+        border: none;
+        color: #ffffff;
+        border-radius: 6px;
+        padding: 14px;
+        font-size: 1.1rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
     }
 
+        .btn-danger:hover {
+            background-color: #c82333; /* Darker red on hover */
+
+            transform: scale(1.02);
+        }
+
+    /* Danger Text */
+
+    .text-danger {
+        color: #dc3545; /* Red color for error messages */
+    }
+
+    /* Form Actions */
+
     .form-actions {
-        display: flex;
-        justify-content: center;
+        text-align: center;
         margin-top: 20px;
     }
+
+    /* Back Link */
 
     .back-link {
         text-align: center;
         margin-top: 20px;
     }
 </style>
+
+

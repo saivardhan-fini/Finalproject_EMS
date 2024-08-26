@@ -2,7 +2,7 @@
 
 @{ ViewBag.Title = "Create"; }
 
-<h2>Create</h2>
+<h2>CREATE NEW</h2>
 
 @using (Html.BeginForm())
 
@@ -12,7 +12,7 @@
 
                 <div class="container mt-4">
 
-                    <h4>Employee</h4>
+                    <h4 style="color:black">EMPLOYEE DETAILS</h4>
 
                     <hr />
 
@@ -98,6 +98,7 @@
 
                             @Html.ValidationMessageFor(model => model.Emp_Dept_ID, "", new { @class = "text-danger" })
 
+
                         </div>
 
                     </div>
@@ -180,7 +181,7 @@
 
                             @Html.DropDownListFor(model => model.Emp_Marital_Status, new List<SelectListItem>
 
-                                            {
+                                                        {
 
                     new SelectListItem { Text = "Select marital status", Value = "" },
 
@@ -197,6 +198,7 @@
                         </div>
 
                     </div>
+
 
                     <div class="form-group row">
 
@@ -239,49 +241,133 @@
                     </div>
 
                 </div>}
+
 <style>
-    .container {
-        background-color: #f8f9fa; /* Light background for the form */
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* Custom CSS for styling */
+    body {
+        font-family: 'Roboto', sans-serif;
+        background-image: url('https://www.the-corporate.com/public/profile_images/41765-1711004313.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+        color: #ffffff;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
+    .container {
+        background-color:#ffffff; /* White background for the container */
+       
+        padding: 20px;
+        border-radius: 8px; /* Rounded corners */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow */
+    }
+
+    .page-title {
+        text-align: center;
+        color: #007bff; /* Dodger Blue for headings */
+        margin-bottom: 30px;
+        font-size: 2rem;
+        font-weight: 700;
+    }
+
+    .details-container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #ffffff; /* White background */
+        border: 1px solid #d1e7dd; /* Light gray border */
+        border-radius: 8px; /* Rounded corners */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow */
+    }
+
+    .details-header {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+        .details-header h2 {
+            font-size: 1.5rem;
+            color: #007bff; /* Dodger Blue for subheadings */
+        }
+
+    .details-list dt {
+        font-weight: 500;
+        color: #333; /* Darker gray for labels */
+    }
+
+    .details-list dd {
+        margin-left: 0;
+        color: #333; /* Darker gray for values */
+        margin-bottom: 10px;
+    }
+
+    .details-links {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+        .details-links a {
+            margin-right: 10px;
+            padding: 8px 20px;
+            color: #ffffff; /* White text color */
+            background-color: #007bff; /* Dodger Blue for buttons */
+            border: 1px solid #007bff; /* Matching border color */
+            border-radius: 6px; /* Rounded corners */
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+            .details-links a:hover {
+                background-color: #0056b3; /* Darker blue for hover */
+                transform: scale(1.02);
+            }
+
+    /* Form Controls */
     .form-control {
-        border-radius: 0.25rem;
-        border-color: #ced4da;
-        background-color: #fff;
+        border-radius: 4px;
+        border-color: #d1e7dd; /* Light gray border for form controls */
+        background-color: #ffffff; /* White background for form controls */
     }
 
         .form-control:focus {
-            border-color: #80bdff;
-            box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
+            border-color: #007bff; /* Dodger Blue focus border */
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Blue shadow on focus */
         }
 
+    /* Buttons */
     .btn-primary {
-        background-color: #007bff;
+        background-color: #007bff; /* Dodger Blue for primary buttons */
         border-color: #007bff;
     }
 
         .btn-primary:hover {
-            background-color: #0056b3;
+            background-color: #0056b3; /* Darker blue on hover */
             border-color: #004085;
         }
 
     .btn-secondary {
-        background-color: #6c757d;
+        background-color: black; /* Medium gray for secondary buttons */
         border-color: #6c757d;
     }
 
         .btn-secondary:hover {
-            background-color: #5a6268;
+            background-color: whitesmoke; /* Darker gray on hover */
             border-color: #545b62;
         }
 
+    /* Text Color */
     .text-danger {
-        color: #dc3545;
+        color: #dc3545; /* Red color for danger text */
     }
-
+    /*gender radio button labels*/
+    .form-check-label{
+        color: black;
+    }
+    /* Form Checkboxes */
     .form-check-input {
         margin-top: 0.3rem;
     }
@@ -290,13 +376,15 @@
         margin-left: 0.5rem;
     }
 
+    /* Form Labels */
     .col-form-label {
+        color: black;
         font-weight: 600;
     }
 
+    /* Form Groups */
     .form-group {
         margin-bottom: 1.5rem;
     }
 </style>
-
 

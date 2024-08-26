@@ -236,7 +236,6 @@
     <Content Include="Views\Employees\Index.cshtml" />
     <Content Include="Views\Account\login.cshtml" />
     <Content Include="Views\Grade_master\Create.cshtml" />
-    <Content Include="Views\Grade_master\Delete.cshtml" />
     <Content Include="Views\Grade_master\Details.cshtml" />
     <Content Include="Views\Grade_master\Edit.cshtml" />
     <Content Include="Views\Grade_master\Index.cshtml" />
@@ -253,7 +252,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Admin\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

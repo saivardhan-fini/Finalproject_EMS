@@ -47,7 +47,7 @@ namespace EMS.Controllers
                             select a;
 
                 // Count total records
-                totalRecord = query.Count();
+            totalRecord = query.Count();
 
                 // Apply sorting
                 if (!string.IsNullOrEmpty(sort) && (sortdir == "asc" || sortdir == "desc"))
@@ -124,6 +124,7 @@ namespace EMS.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 if (string.IsNullOrEmpty(employee.Emp_First_Name))
                 {
                     ModelState.AddModelError("Emp_First_Name", "Please enter the first name");
@@ -142,6 +143,7 @@ namespace EMS.Controllers
 
                 if (string.IsNullOrEmpty(employee.Emp_Contact_Num))
                 {
+
                     ModelState.AddModelError("Emp_Contact_Num", "Please enter the contact number");
                     ViewBag.Emp_Dept_ID = new SelectList(db.Departments, "Dept_ID", "Dept_Name", employee.Emp_Dept_ID);
                     ViewBag.Emp_Grade = new SelectList(db.Grade_master, "Grade_Code", "Description", employee.Emp_Grade);
@@ -155,7 +157,6 @@ namespace EMS.Controllers
                     ViewBag.Emp_Grade = new SelectList(db.Grade_master, "Grade_Code", "Description", employee.Emp_Grade);
                     return View(employee);
                 }
-
                 var grade = db.Grade_master.FirstOrDefault(g => g.Grade_Code == employee.Emp_Grade);
                 if (grade != null)
                 {
@@ -280,3 +281,5 @@ namespace EMS.Controllers
         }
     }
 }
+
+

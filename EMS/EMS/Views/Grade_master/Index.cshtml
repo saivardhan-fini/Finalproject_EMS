@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2 class="page-title">Grade Master List</h2>
+<h2 class="page-title">GRADE MASTER LIST</h2>
 
 <p>
     <a href="@Url.Action("Create")" class="btn btn-primary">Create New</a>
@@ -47,7 +47,7 @@
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.Grade_Code }, new { @class = "btn btn-secondary btn-sm" }) |
                     @Html.ActionLink("Details", "Details", new { id = item.Grade_Code }, new { @class = "btn btn-secondary btn-sm" }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Grade_Code }, new { @class = "btn btn-danger btn-sm" })
+                  
                 </td>
             </tr>
         }
@@ -57,10 +57,16 @@
 <style>
     body {
         font-family: 'Roboto', sans-serif;
-        background-color: #f0f0f0; /* Light gray background for the page */
-        color: #333;
+        background-image: url('https://www.the-corporate.com/public/profile_images/41765-1711004313.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+        color: #ffffff;
         margin: 0;
-        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .page-title {
@@ -81,6 +87,7 @@
             padding: 12px;
             text-align: left;
             border-bottom: 1px solid #ddd; /* Light gray border for table rows */
+            color : #000000; 
         }
 
         .table thead th {
@@ -112,7 +119,7 @@
         }
 
     .btn-secondary {
-        background-color: #6c757d;
+        background-color: red;
         border-color: #6c757d;
         color: #ffffff;
         border-radius: 6px;

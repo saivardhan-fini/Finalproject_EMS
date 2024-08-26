@@ -42,19 +42,22 @@
     <EntitySetMapping Name="Admins">
       <EntityTypeMapping TypeName="EmpDatabaseModel.Admin">
         <MappingFragment StoreEntitySet="Admin">
-          <ScalarProperty Name="AdminId" ColumnName="AdminId" />
           <ScalarProperty Name="AdminPassword" ColumnName="AdminPassword" />
+          <ScalarProperty Name="AdminId" ColumnName="AdminId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Holidays">
       <EntityTypeMapping TypeName="EmpDatabaseModel.Holiday">
         <MappingFragment StoreEntitySet="Holiday">
-          <ScalarProperty Name="HolidayID" ColumnName="HolidayID" />
-          <ScalarProperty Name="HolidayName" ColumnName="HolidayName" />
           <ScalarProperty Name="HolidayDate" ColumnName="HolidayDate" />
+          <ScalarProperty Name="HolidayName" ColumnName="HolidayName" />
+          <ScalarProperty Name="HolidayID" ColumnName="HolidayID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="AddHoliday" FunctionName="EmpDatabaseModel.Store.AddHoliday" />
+    <FunctionImportMapping FunctionImportName="DeleteHoliday" FunctionName="EmpDatabaseModel.Store.DeleteHoliday" />
+    <FunctionImportMapping FunctionImportName="UpdateHoliday" FunctionName="EmpDatabaseModel.Store.UpdateHoliday" />
   </EntityContainerMapping>
 </Mapping>

@@ -39,24 +39,6 @@
     <Property Name="Max_Salary" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
     <NavigationProperty Name="Employees" Relationship="Self.FK__Employee__Emp_Gr__412EB0B6" FromRole="Grade_master" ToRole="Employee" />
   </EntityType>
-  <EntityType Name="Admin">
-    <Key>
-      <PropertyRef Name="AdminId" />
-      <PropertyRef Name="AdminPassword" />
-    </Key>
-    <Property Name="AdminId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="AdminPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Holiday">
-    <Key>
-      <PropertyRef Name="HolidayID" />
-      <PropertyRef Name="HolidayName" />
-      <PropertyRef Name="HolidayDate" />
-    </Key>
-    <Property Name="HolidayID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="HolidayName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="HolidayDate" Type="DateTime" Nullable="false" Precision="0" />
-  </EntityType>
   <Association Name="FK__Employee__Emp_De__403A8C7D">
     <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
     <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
@@ -85,8 +67,6 @@
     <EntitySet Name="Departments" EntityType="Self.Department" />
     <EntitySet Name="Employees" EntityType="Self.Employee" />
     <EntitySet Name="Grade_master" EntityType="Self.Grade_master" />
-    <EntitySet Name="Admins" EntityType="Self.Admin" />
-    <EntitySet Name="Holidays" EntityType="Self.Holiday" />
     <AssociationSet Name="FK__Employee__Emp_De__403A8C7D" Association="Self.FK__Employee__Emp_De__403A8C7D">
       <End Role="Department" EntitySet="Departments" />
       <End Role="Employee" EntitySet="Employees" />
@@ -95,5 +75,34 @@
       <End Role="Grade_master" EntitySet="Grade_master" />
       <End Role="Employee" EntitySet="Employees" />
     </AssociationSet>
+    <EntitySet Name="Admins" EntityType="EmpDatabaseModel.Admin" />
+    <EntitySet Name="Holidays" EntityType="EmpDatabaseModel.Holiday" />
+    <FunctionImport Name="AddHoliday">
+      <Parameter Name="HolidayName" Mode="In" Type="String" />
+      <Parameter Name="HolidayDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteHoliday">
+      <Parameter Name="HolidayID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateHoliday">
+      <Parameter Name="HolidayID" Mode="In" Type="Int32" />
+      <Parameter Name="HolidayName" Mode="In" Type="String" />
+      <Parameter Name="HolidayDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
   </EntityContainer>
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="AdminId" />
+    </Key>
+    <Property Name="AdminId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AdminPassword" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Holiday">
+    <Key>
+      <PropertyRef Name="HolidayID" />
+    </Key>
+    <Property Name="HolidayID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HolidayName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="HolidayDate" Type="DateTime" Nullable="false" Precision="0" />
+  </EntityType>
 </Schema>
