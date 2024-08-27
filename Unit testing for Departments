@@ -1,0 +1,120 @@
+using Moq;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Web.Mvc;
+using Xunit;
+using EMS.Controllers;
+using EMS.Models;
+ 
+namespace EMS.Tests.Controllers
+{
+    public class DepartmentsControllerTests
+    {
+        private Mock<EmpDatabaseEntities1> _mockContext;
+        private DepartmentsController _controller;
+ 
+        public DepartmentsControllerTests()
+        {
+            _mockContext = new Mock<EmpDatabaseEntities1>();
+            _controller = new DepartmentsController
+            {
+                db = _mockContext.Object
+            };
+        }
+ 
+        [Fact]
+        public void Index_ReturnsAViewResult_WithAListOfDepartments()
+        {
+            
+            var departments = new List<Department>
+            {
+                new Department { Dept_ID = 1, Dept_Name = "HR" },
+                new Department { Dept_ID = 2, Dept_Name = "IT" }
+            }.AsQueryable();
+ 
+            var mockSet = new Mock<DbSet<Department>>();
+            mockSet.As<IQueryable<Department>>().Setup(m => m.Provider).Returns(departments.Provider);
+            mockSet.As<IQueryable<Department>>().Setup(m => m.Expression).Returns(departments.Expression);
+            mockSet.As<IQueryable<Department>>().Setup(m => m.ElementType).Returns(departments.ElementType);
+            mockSet.As<IQueryable<Department>>().Setup(m => m.GetEnumerator()).Returns(departments.GetEnumerator());
+ 
+            _mockContext.Setup(c => c.Departments).Returns(mockSet.Object);
+ 
+            
+            var result = _controller.Index() as ViewResult;
+ 
+            
+            var model = Assert.IsAssignableFrom<List<Department>>(result.Model);
+            Assert.Equal(2, model.Count);
+        }
+ 
+        [Fact]
+        public void Details_ReturnsHttpBadRequest_WhenIdIsNull()
+        {
+            
+            var result = _controller.Details(null);
+ 
+            
+            Assert.IsType<HttpStatusCodeResult>(result);
+            Assert.Equal(HttpStatusCode.BadRequest, ((HttpStatusCodeResult)result).StatusCode);
+        }
+ 
+        [Fact]
+        public void Details_ReturnsHttpNotFound_WhenDepartmentDoesNotExist()
+        {
+            
+            _mockContext.Setup(c => c.Departments.Find(It.IsAny<int>())).Returns((Department)null);
+ 
+            
+            var result = _controller.Details(1);
+ 
+            
+            Assert.IsType<HttpNotFoundResult>(result);
+        }
+ 
+        [Fact]
+        public void Create_Post_ReturnsRedirectToActionResult_WhenModelStateIsValid()
+        {
+            
+            var department = new Department { Dept_ID = 1, Dept_Name = "HR" };
+ 
+            
+            var result = _controller.Create(department) as RedirectToRouteResult;
+ 
+            
+            Assert.NotNull(result);
+            Assert.Equal("Index", result.RouteValues["action"]);
+        }
+ 
+        [Fact]
+        public void Edit_ReturnsHttpNotFound_WhenDepartmentDoesNotExist()
+        {
+            
+            _mockContext.Setup(c => c.Departments.Find(It.IsAny<int>())).Returns((Department)null);
+ 
+            
+            var result = _controller.Edit(1);
+ 
+            
+            Assert.IsType<HttpNotFoundResult>(result);
+        }
+ 
+        [Fact]
+        public void DeleteConfirmed_RemovesDepartment_AndRedirectsToIndex()
+        {
+            
+            var department = new Department { Dept_ID = 1, Dept_Name = "HR" };
+            _mockContext.Setup(c => c.Departments.Find(It.IsAny<int>())).Returns(department);
+            var mockSet = new Mock<DbSet<Department>>();
+            _mockContext.Setup(c => c.Departments).Returns(mockSet.Object);
+ 
+            
+            var result = _controller.DeleteConfirmed(1) as RedirectToRouteResult;
+ 
+      
+            Assert.NotNull(result);
+            Assert.Equal("Index", result.RouteValues["action"]);
+        }
+    }
+}
